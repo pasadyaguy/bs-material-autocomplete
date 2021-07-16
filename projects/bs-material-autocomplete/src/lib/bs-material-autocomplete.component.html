@@ -1,1 +1,16 @@
-<p>bs-material-autocomplete works!</p>
+<div [formGroup]="form">
+  <mat-form-field class="mat-full-width">
+    <mat-label>{{placeholder}}</mat-label>
+    <input #searchInput type="text" matInput [required]="isRequired" formControlName="{{ controlName }}" [matAutocomplete]="auto">
+    <button mat-button *ngIf="searchControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="onCleared()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="searchControl.errors?.required">Selection is required.</mat-error>
+    <mat-error *ngIf="searchControl.errors?.invalidselection">Invalid selection, please search again.</mat-error>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option (onSelectionChange)="onSelect($event)" *ngFor="let option of itemsFiltered | async" [value]="option">
+        {{option.displayValue}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
