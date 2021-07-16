@@ -2,7 +2,7 @@
   <mat-form-field class="mat-full-width">
     <mat-label>{{placeholder}}</mat-label>
     <input #searchInput type="text" matInput [required]="isRequired" formControlName="{{ controlName }}" [matAutocomplete]="auto">
-    <button mat-button *ngIf="searchControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="onCleared()">
+    <button tabindex="-1" *ngIf="searchControl.value" mat-button mat-icon-button matSuffix aria-label="Clear" (click)="onCleared()">
       <mat-icon>close</mat-icon>
     </button>
     <mat-error *ngIf="searchControl.errors?.required">Selection is required.</mat-error>
