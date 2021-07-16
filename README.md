@@ -10,6 +10,14 @@ A reactive form single control angular material autocomplete component.
 npm install @smithbrianscott/bs-material-autocomplete
 ```
 
+Add the styles you prefer from the @angular/material npm package to that angular.json file.
+
+```json
+"styles": {
+  "node_module/@angular/material/prebuilt-themes/indigo-pink.css"
+}
+```
+
 Add `BsMaterialAutocompleteModule` to your `@NgModule` imports.
 
 ```typescript
