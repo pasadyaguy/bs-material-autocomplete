@@ -18,6 +18,11 @@ Add the styles you prefer from the @angular/material npm package to that angular
 }
 ```
 
+Also add the styles for the material icons. (You can also import this in your CSS)
+```html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
 Add `BsMaterialAutocompleteModule` to your `@NgModule` imports.
 
 ```typescript
