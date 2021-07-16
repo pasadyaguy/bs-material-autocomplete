@@ -40,12 +40,12 @@ export class BsMaterialAutocompleteComponent implements OnInit {
     return false;
   }
 
-  existsValidation(list: SearchInfo[]): ValidatorFn {
+  existsValidation(): ValidatorFn {
     return (c: AbstractControl): { [key: string]: boolean } | null => {  
       if (c.value === null || c.pristine || c.value === '') {
         return null;
       } else if (c.dirty) {
-        return (list.find(x => x.searchKeywords === c.value.searchKeywords)) ? null : { 'invalidselection': true };
+        return (this.items.find(x => x.searchKeywords === c.value.searchKeywords)) ? null : { 'invalidselection': true };
       }
       return null;
     }
@@ -53,10 +53,10 @@ export class BsMaterialAutocompleteComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.form.get(this.controlName).validator) {
-      this.form.get(this.controlName).setValidators([this.form.get(this.controlName).validator, this.existsValidation(this.items)]);
+      this.form.get(this.controlName).setValidators([this.form.get(this.controlName).validator, this.existsValidation]);
     }
     else {
-      this.form.get(this.controlName).setValidators([this.existsValidation(this.items)]);
+      this.form.get(this.controlName).setValidators([this.existsValidation]);
     }
     this.initSearchForm();
   }
