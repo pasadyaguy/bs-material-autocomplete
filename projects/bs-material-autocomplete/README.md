@@ -10,6 +10,23 @@ A reactive form single control angular material autocomplete component.
 npm install @smithbrianscott/bs-material-autocomplete
 ```
 
+Add the styles you prefer from the @angular/material npm package to that angular.json file.
+
+```json
+"styles": {
+  "node_module/@angular/material/prebuilt-themes/indigo-pink.css"
+}
+```
+
+Also add the styles for the material icons. (You can also import this in your CSS)
+
+```html
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+```
+
 Add `BsMaterialAutocompleteModule` to your `@NgModule` imports.
 
 ```typescript
@@ -25,7 +42,7 @@ export class FeatureModule {}
 
 Add the autocomplete control using the selector `<bs-material-autocomplete>`.
 
-You must use the following interface. You import this from the library. `import { SearchInfo } from '@smithbrianscott/bs-material-autocomplete/lib/search-info';`
+You must use the following interface. You import this from the library. `import { BsSearchInfo } from '@smithbrianscott/bs-material-autocomplete/lib/search-info';`
 
 ```typescript
 export class BsSearchInfo {
@@ -74,11 +91,11 @@ export class MyAppComponent implements OnInit {
 
 ## API
 
-| Name                                            | Required | Default     | Description                                                              |
-| ----------------------------------------------- | -------- | ----------- | ------------------------------------------------------------------------ |
-| @Input() placeholder: string;                   | Required | Search      | Placeholder value                                                        |
-| @Input() controlName: string;                   | Required | controlName | Form control name value from your form control for the selected object   |
-| @Input() idValueControlName: string;            | Optional | id          | Form control name value from your form control for the selected ID value |
-| @Input() form: FormGroup;                       | Required |             | The FormGroup instance that contains the controlName                     |
-| @Input() items: SearchInfo[];                   | Required | []          | The list of items to search using autocomplete                           |
-| @Output() onSelected: EventEmitter<SearchInfo>; | Optional |             | An output event of the item selected                                     |
+| Name                                              | Required | Default     | Description                                                              |
+| ------------------------------------------------- | -------- | ----------- | ------------------------------------------------------------------------ |
+| @Input() placeholder: string;                     | Required | Search      | Placeholder value                                                        |
+| @Input() controlName: string;                     | Required | controlName | Form control name value from your form control for the selected object   |
+| @Input() idValueControlName: string;              | Optional | id          | Form control name value from your form control for the selected ID value |
+| @Input() form: FormGroup;                         | Required |             | The FormGroup instance that contains the controlName                     |
+| @Input() items: BsSearchInfo[];                   | Required | []          | The list of items to search using autocomplete                           |
+| @Output() onSelected: EventEmitter<BsSearchInfo>; | Optional |             | An output event of the item selected                                     |
