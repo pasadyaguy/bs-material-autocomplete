@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'bs-material-autocomplete',
-  template: ` <p>bs-material-autocomplete works!</p> `,
+  templateUrl: 'bs-material-autocomplete.component.html',
   styles: [],
 })
 export class BsMaterialAutocompleteComponent implements OnInit {
