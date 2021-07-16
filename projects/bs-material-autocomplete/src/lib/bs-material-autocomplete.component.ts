@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/f
 import { MatOptionSelectionChange } from '@angular/material/core';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { SearchInfo } from './search-info';
+import { BsSearchInfo } from './bs-search-info';
 
 @Component({
   selector: 'bs-material-autocomplete',
@@ -15,11 +15,11 @@ export class BsMaterialAutocompleteComponent implements OnInit {
   @Input() controlName: string = 'controlName';
   @Input() idValueControlName: string = 'id';
   @Input() form: FormGroup;
-  @Input() items: SearchInfo[] = [];
+  @Input() items: BsSearchInfo[] = [];
 
-  itemsFiltered: Observable<SearchInfo[]>;
+  itemsFiltered: Observable<BsSearchInfo[]>;
 
-  @Output() onSelected: EventEmitter<SearchInfo> = new EventEmitter<SearchInfo>();
+  @Output() onSelected: EventEmitter<BsSearchInfo> = new EventEmitter<BsSearchInfo>();
 
   constructor() {}
 
@@ -61,7 +61,7 @@ export class BsMaterialAutocompleteComponent implements OnInit {
     this.initSearchForm();
   }
 
-  displayFn(item: SearchInfo): string {
+  displayFn(item: BsSearchInfo): string {
     return item && item.displayValue ? item.displayValue : '';
   }
 
@@ -91,7 +91,7 @@ export class BsMaterialAutocompleteComponent implements OnInit {
     this.form.updateValueAndValidity();
   }
 
-  private _filter(value: string): SearchInfo[] {
+  private _filter(value: string): BsSearchInfo[] {
     if ((typeof value) === "string") {
       const filterValue = value.toLowerCase();
       return this.items.filter(option => option.searchKeywords.toLowerCase().includes(filterValue)).slice(0, 20);
