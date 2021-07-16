@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "bs-material-autocomplete": {
+      "projectType": "library",
+      "root": "projects/bs-material-autocomplete",
+      "sourceRoot": "projects/bs-material-autocomplete/src",
+      "prefix": "bs",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/bs-material-autocomplete/tsconfig.lib.json",
+            "project": "projects/bs-material-autocomplete/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bs-material-autocomplete/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bs-material-autocomplete/src/test.ts",
+            "tsConfig": "projects/bs-material-autocomplete/tsconfig.spec.json",
+            "karmaConfig": "projects/bs-material-autocomplete/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bs-material-autocomplete/tsconfig.lib.json",
+              "projects/bs-material-autocomplete/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "bs-material-autocomplete"
 }
