@@ -24,10 +24,11 @@ export class FeatureModule {}
 ```
 
 Add the autocomplete control using the selector `<bs-material-autocomplete>`.
-You must use the following interface. You can create this in your project.
+
+You must use the following interface. You import this from the library. `import { SearchInfo } from '@smithbrianscott/bs-material-autocomplete/lib/search-info';`
 
 ```typescript
-export class SearchInfo {
+export class BsSearchInfo {
   id: number;
   searchKeywords: string;
   displayValue: string;
@@ -45,7 +46,7 @@ export class SearchInfo {
 ```typescript
 export class MyAppComponent implements OnInit {
   myForm: FormGroup;
-  searchItems: SearchInfo[] = [];
+  searchItems: BsSearchInfo[] = [];
 
   constructor(private fb: FormBuilder) {}
 
