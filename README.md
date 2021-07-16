@@ -26,24 +26,54 @@ export class FeatureModule {}
 ```
 
 Add the autocomplete control using the selector `<bs-material-autocomplete>`.
-You must use the following interface
+You must use the following interface. You can create this in your project.
 ```typescript
 export class SearchInfo {
  id: number;
  searchKeywords: string;
  displayValue: string;
+ data: any;
 }
 ```
 - id - Primary key value from your dataset.
 - searchKeywords - String of searchable value for the autocomplete search. i.e. 'john,doe,john doe,johndoe@gmail.com,2384756'
 - displayValue - Displayed value after selecting an item. i.e. 'John Doe'
+- data - Not required. Can bind your original object data value for use when item selected.
+
 ### TS Component
 ```typescript
-
+export class MyAppComponent implements OnInit {
+ myForm: FormGroup;
+ searchItems: SearchInfo[] = [];
+ 
+ constructor(private fb: FormBuilder) {}
+ 
+ ngOnInit() {
+  this.myForm = this.fb.group({
+    personID: [null],
+    person: [null, [Validators.required]] // Set required on this control if required
+  });
+ }
+}
 ```
 ### HTML Component
 ```html
-
+<bs-material-autocomplete
+  [placeholder]="'Autocomplete Placeholder'"
+  [form]="myForm"
+  [idValueControlName]="'personID'"
+  [controlName]="'person'"
+  [items]="searchItems">
+</bs-material-autocomplete>
 ```
 
 ## API
+
+| Name | Required | Default | Description |
+|------|----------|---------|-------------|
+| @Input() placeholder: string; | Required | Search | Placeholder value |
+| @Input() controlName: string; | Required | controlName | Form control name value from your form control for the selected object | 
+| @Input() idValueControlName: string; | Optional | id | Form control name value from your form control for the selected ID value |
+| @Input() form: FormGroup; | Required | | The FormGroup instance that contains the controlName |
+| @Input() items: SearchInfo[]; | Required | [] | The list of items to search using autocomplete |
+| @Output() onSelected: EventEmitter<SearchInfo>; | Optional | | An output event of the item selected |
