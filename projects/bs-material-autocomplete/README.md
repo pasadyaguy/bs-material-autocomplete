@@ -5,6 +5,8 @@
 A reactive form single control angular material autocomplete component.
 ![bs-material-autocomplete](https://user-images.githubusercontent.com/19986009/126011568-caaa5b74-e46f-46b5-b56c-5fbdc2f1cf97.gif)
 
+[See Demo (Stackblitz)](https://stackblitz.com/edit/bs-angular-material-autocomplete?file=src%2Fapp%2Fapp.component.ts)
+
 ## Usage
 
 ```
