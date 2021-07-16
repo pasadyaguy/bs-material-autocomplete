@@ -24,3 +24,26 @@ import { BsMaterialAutocompleteModule } from '@smithbrianscott/bs-material-autoc
 })
 export class FeatureModule {}
 ```
+
+Add the autocomplete control using the selector `<bs-material-autocomplete>`.
+You must use the following interface
+```typescript
+export class SearchInfo {
+ id: number;
+ searchKeywords: string;
+ displayValue: string;
+}
+```
+- id - Primary key value from your dataset.
+- searchKeywords - String of searchable value for the autocomplete search. i.e. 'john,doe,john doe,johndoe@gmail.com,2384756'
+- displayValue - Displayed value after selecting an item. i.e. 'John Doe'
+### TS Component
+```typescript
+
+```
+### HTML Component
+```html
+
+```
+
+## API
