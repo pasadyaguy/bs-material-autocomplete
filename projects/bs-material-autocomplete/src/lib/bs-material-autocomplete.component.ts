@@ -53,10 +53,10 @@ export class BsMaterialAutocompleteComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.form.get(this.controlName).validator) {
-      this.form.get(this.controlName).setValidators([this.form.get(this.controlName).validator, this.existsValidation]);
+      this.form.get(this.controlName).setValidators([this.form.get(this.controlName).validator, this.existsValidation()]);
     }
     else {
-      this.form.get(this.controlName).setValidators([this.existsValidation]);
+      this.form.get(this.controlName).setValidators([this.existsValidation()]);
     }
     this.initSearchForm();
   }
