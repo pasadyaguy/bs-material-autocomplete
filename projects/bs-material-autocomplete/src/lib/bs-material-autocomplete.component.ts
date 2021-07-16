@@ -1,7 +1,7 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { SearchInfo } from './search-info';
 
@@ -10,14 +10,16 @@ import { SearchInfo } from './search-info';
   templateUrl: 'bs-material-autocomplete.component.html',
   styles: [],
 })
-export class BsMaterialAutocompleteComponent implements OnInit, OnDestroy {
+export class BsMaterialAutocompleteComponent implements OnInit {
   @Input() placeholder: string = 'Search';
   @Input() controlName: string = 'controlName';
   @Input() idValueControlName: string = 'id';
   @Input() form: FormGroup;
-  @Input() markAllAsTouchedSubject: Subject<boolean> = new Subject<boolean>();
   @Input() items: SearchInfo[] = [];
+
   itemsFiltered: Observable<SearchInfo[]>;
+
+  @Output() onSelected: EventEmitter<SearchInfo> = new EventEmitter<SearchInfo>();
 
   constructor() {}
 
@@ -59,12 +61,6 @@ export class BsMaterialAutocompleteComponent implements OnInit, OnDestroy {
     this.initSearchForm();
   }
 
-  ngOnDestroy(): void {
-    if (this.markAllAsTouchedSubject !== undefined) {
-      this.markAllAsTouchedSubject.unsubscribe();
-    }
-  }
-
   displayFn(item: SearchInfo): string {
     return item && item.displayValue ? item.displayValue : '';
   }
@@ -83,6 +79,7 @@ export class BsMaterialAutocompleteComponent implements OnInit, OnDestroy {
       [this.controlName]: event.source.value,
       [this.idValueControlName]: event.source.value.Id,
     });
+    this.onSelected.emit(event.source.value);
     this.form.updateValueAndValidity();
   }
 
