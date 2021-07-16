@@ -1,24 +1,83 @@
-# BsMaterialAutocomplete
+# Angular Material Autocomplete
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.9.
+## Description
 
-## Code scaffolding
+A reactive form single control angular material autocomplete component.
 
-Run `ng generate component component-name --project bs-material-autocomplete` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project bs-material-autocomplete`.
-> Note: Don't forget to add `--project bs-material-autocomplete` or else it will be added to the default project in your `angular.json` file. 
+## Usage
 
-## Build
+```
+npm install @smithbrianscott/bs-material-autocomplete
+```
 
-Run `ng build bs-material-autocomplete` to build the project. The build artifacts will be stored in the `dist/` directory.
+Add `BsMaterialAutocompleteModule` to your `@NgModule` imports.
 
-## Publishing
+```typescript
+import { NgModule } from "@angular/core";
 
-After building your library with `ng build bs-material-autocomplete`, go to the dist folder `cd dist/bs-material-autocomplete` and run `npm publish`.
+import { BsMaterialAutocompleteModule } from "@smithbrianscott/bs-material-autocomplete";
 
-## Running unit tests
+@NgModule({
+  imports: [BsMaterialAutocompleteModule],
+})
+export class FeatureModule {}
+```
 
-Run `ng test bs-material-autocomplete` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Add the autocomplete control using the selector `<bs-material-autocomplete>`.
+You must use the following interface. You can create this in your project.
 
-## Further help
+```typescript
+export class SearchInfo {
+  id: number;
+  searchKeywords: string;
+  displayValue: string;
+  data: any;
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- id - Primary key value from your dataset.
+- searchKeywords - String of searchable value for the autocomplete search. i.e. 'john,doe,john doe,johndoe@gmail.com,2384756'
+- displayValue - Displayed value after selecting an item. i.e. 'John Doe'
+- data - Not required. Can bind your original object data value for use when item selected.
+
+### TS Component
+
+```typescript
+export class MyAppComponent implements OnInit {
+  myForm: FormGroup;
+  searchItems: SearchInfo[] = [];
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      personID: [null],
+      person: [null, [Validators.required]], // Set required on this control if required
+    });
+  }
+}
+```
+
+### HTML Component
+
+```html
+<bs-material-autocomplete
+  [placeholder]="'Autocomplete Placeholder'"
+  [form]="myForm"
+  [idValueControlName]="'personID'"
+  [controlName]="'person'"
+  [items]="searchItems"
+>
+</bs-material-autocomplete>
+```
+
+## API
+
+| Name                                            | Required | Default     | Description                                                              |
+| ----------------------------------------------- | -------- | ----------- | ------------------------------------------------------------------------ |
+| @Input() placeholder: string;                   | Required | Search      | Placeholder value                                                        |
+| @Input() controlName: string;                   | Required | controlName | Form control name value from your form control for the selected object   |
+| @Input() idValueControlName: string;            | Optional | id          | Form control name value from your form control for the selected ID value |
+| @Input() form: FormGroup;                       | Required |             | The FormGroup instance that contains the controlName                     |
+| @Input() items: SearchInfo[];                   | Required | []          | The list of items to search using autocomplete                           |
+| @Output() onSelected: EventEmitter<SearchInfo>; | Optional |             | An output event of the item selected                                     |
