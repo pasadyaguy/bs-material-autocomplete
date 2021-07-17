@@ -1,4 +1,5 @@
-# Angular Material Autocomplete
+![npm (scoped)](https://img.shields.io/npm/v/@smithbrianscott/bs-material-autocomplete?style=plastic)
+![npm](https://img.shields.io/npm/dw/@smithbrianscott/bs-material-autocomplete?style=plastic)
 
 ## Description
 
