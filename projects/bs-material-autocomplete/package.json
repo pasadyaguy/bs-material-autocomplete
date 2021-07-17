@@ -9,6 +9,13 @@
   "bugs": {
     "url": "https://github.com/smithbrianscott/bs-material-autocomplete/issues"
   },
+  "keywords": [
+    "angular",
+    "material",
+    "angular material",
+    "autocomplete",
+    "search"
+  ],
   "peerDependencies": {
     "@angular/common": "^11.0.9",
     "@angular/core": "^11.0.9"
