@@ -77,7 +77,7 @@ export class BsMaterialAutocompleteComponent implements OnInit {
   onSelect(event: MatOptionSelectionChange) {
     this.form.patchValue({
       [this.controlName]: event.source.value,
-      [this.idValueControlName]: event.source.value.Id,
+      [this.idValueControlName]: event.source.value.id,
     });
     this.onSelected.emit(event.source.value);
     this.form.updateValueAndValidity();
