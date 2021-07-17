@@ -13,7 +13,7 @@ A reactive form single control angular material autocomplete component.
 npm install @smithbrianscott/bs-material-autocomplete
 ```
 
-Add the styles you prefer from the @angular/material npm package to that angular.json file.
+Add the styles you prefer from the @angular/material npm package to the angular.json file.
 
 ```json
 "styles": {
@@ -45,7 +45,7 @@ export class FeatureModule {}
 
 Add the autocomplete control using the selector `<bs-material-autocomplete>`.
 
-You must use the following interface. You import this from the library. `import { BsSearchInfo } from '@smithbrianscott/bs-material-autocomplete/lib/search-info';`
+You must use the following class. You can import this from the library. <br>`import { BsSearchInfo } from '@smithbrianscott/bs-material-autocomplete/lib/bs-search-info';`
 
 ```typescript
 export class BsSearchInfo {
@@ -55,11 +55,12 @@ export class BsSearchInfo {
   data: any;
 }
 ```
-
-- id - Primary key value from your dataset.
-- searchKeywords - String of searchable value for the autocomplete search. i.e. 'john,doe,john doe,johndoe@gmail.com,2384756'
-- displayValue - Displayed value after selecting an item. i.e. 'John Doe'
-- data - Not required. Can bind your original object data value for use when item selected.
+| Name | Description |
+|------|-------------|
+| id | Primary key value from your dataset |
+| searchKeywords | String of searchable value for the autocomplete search. i.e. 'john,doe,john doe,johndoe@gmail.com,2384756' |
+| displayValue | Displayed value after selecting an item. i.e. 'John Doe' |
+| data | Not required. Can bind your original object data value for use when item selected. |
 
 ### TS Component
 
