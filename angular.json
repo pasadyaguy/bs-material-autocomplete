@@ -44,5 +44,8 @@
       }
     }
   },
-  "defaultProject": "bs-material-autocomplete"
+  "defaultProject": "bs-material-autocomplete",
+  "cli": {
+    "analytics": "e0481a21-dbf4-4032-b16c-e751d37e174a"
+  }
 }
