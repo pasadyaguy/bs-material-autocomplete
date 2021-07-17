@@ -16,7 +16,7 @@ export class BsMaterialAutocompleteComponent implements OnInit {
   @Input() idValueControlName: string = 'id';
   @Input() form: FormGroup;
   @Input() items: BsSearchInfo[] = [];
-  @Input() invalidSelectionErrorMessage: string = 'Invalid selection, please search again.';
+  @Input() invalidSelectionErrorMessage: string = 'Invalid selection, please search again';
   @Input() requiredErrorMessage: string = 'Required';
 
   itemsFiltered: Observable<BsSearchInfo[]>;
