@@ -1,7 +1,7 @@
 {
   "name": "@smithbrianscott/bs-material-autocomplete",
   "license": "MIT",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smithbrianscott/bs-material-autocomplete.git"

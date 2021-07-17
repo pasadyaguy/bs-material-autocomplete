@@ -1,12 +1,12 @@
 <div [formGroup]="form">
   <mat-form-field style="width:100%">
     <mat-label>{{placeholder}}</mat-label>
-    <input #searchInput type="text" matInput [required]="isRequired" formControlName="{{ controlName }}" [matAutocomplete]="auto">
+    <input #searchInput type="text" id="bs-material-autocomplete-{{ controlName }}" matInput [required]="isRequired" formControlName="{{ controlName }}" [matAutocomplete]="auto">
     <button tabindex="-1" *ngIf="searchControl.value" mat-button mat-icon-button matSuffix aria-label="Clear" (click)="onCleared()">
       <mat-icon>close</mat-icon>
     </button>
-    <mat-error *ngIf="searchControl.errors?.required">Selection is required.</mat-error>
-    <mat-error *ngIf="searchControl.errors?.invalidselection">Invalid selection, please search again.</mat-error>
+    <mat-error *ngIf="searchControl.errors?.required">{{ requiredErrorMessage }}</mat-error>
+    <mat-error *ngIf="searchControl.errors?.invalidselection">{{ invalidSelectionErrorMessage }}</mat-error>
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       <mat-option (onSelectionChange)="onSelect($event)" *ngFor="let option of itemsFiltered | async" [value]="option">
         {{option.displayValue}}
